@@ -42,7 +42,7 @@ public class ConversionTest {
         ArrayList<Record> records = new ArrayList<Record>();
         for (int i = 0; i < size; i++) {
             Date date = createDate("2014-05-07T17:30:20+00:00");
-            Record record = new Record("123", "foo@bar.com", "John", "Smith", "123 Street St", date);
+            Record record = new Record(i, "123", "foo@bar.com", "John", "Smith", "123 Street St", date);
             records.add(record);
         }
         return records;
@@ -52,13 +52,14 @@ public class ConversionTest {
     public void ConvertJSONToRecords() throws FileNotFoundException {
         String content = new Scanner(new File("tests/test_leads.json")).useDelimiter("\\Z").next();
         ArrayList<Record> records = Converter.convertToLeads(content);
-        Record person = records.get(0);
-        assertEquals("123", person.id);
-        assertEquals("foo@bar.com", person.email);
-        assertEquals("John", person.firstName);
-        assertEquals("Smith", person.lastName);
-        assertEquals("123 Street St", person.address);
-        assertDate(2014, 5, 7, 17, 30, 20, person.date);
+        Record record = records.get(0);
+        assertEquals(0, record.number);
+        assertEquals("123", record.id);
+        assertEquals("foo@bar.com", record.email);
+        assertEquals("John", record.firstName);
+        assertEquals("Smith", record.lastName);
+        assertEquals("123 Street St", record.address);
+        assertDate(2014, 5, 7, 17, 30, 20, record.date);
     }
 
     @Test
@@ -78,9 +79,10 @@ public class ConversionTest {
     @Test
     public void ConvertsRecordsToJSONWithMultipleRecords() throws FileNotFoundException {
         ArrayList<Record> records = createRecords(2);
+        assertEquals(0, records.get(0).number);
+        assertEquals(1, records.get(1).number);
         JSONObject result = Converter.convertToJSON(records);
         JSONArray leads = (JSONArray) result.get("leads");
-        System.out.println(leads);
         assertEquals(2, leads.size());
     }
 
