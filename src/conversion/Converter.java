@@ -41,7 +41,7 @@ public class Converter {
             String lastName = (String) lead.get("lastName");
             String address = (String) lead.get("address");
             Date date = convertToDate((String) lead.get("entryDate"));
-            result.add(new Record(id, email, firstName, lastName, address, date));
+            result.add(new Record(i, id, email, firstName, lastName, address, date));
         }
         return result;
     }
