@@ -1,4 +1,4 @@
-import graph.Record;
+import record.Record;
 import org.junit.Test;
 
 import java.text.ParseException;
