@@ -1,7 +1,9 @@
 package deduplicater;
 
+import change.Change;
 import record.Record;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -19,6 +21,8 @@ class Node {
     }
 }
 
+
+
 public class Deduplicater {
 
     ArrayList<Record> records;
@@ -28,20 +32,34 @@ public class Deduplicater {
     }
 
     public ArrayList<Record> getUniqueRecords() {
+        return getDeduplicationResult().records;
+
+    }
+
+    public DeduplicationResult getDeduplicationResult(){
         ArrayList<Record> sortedRecords = getSortedRecords();
+        ArrayList<Change> changes = new ArrayList<Change>();
         Stack<Node> nodes = getNodes(sortedRecords);
         setEdges(nodes);
 
-        ArrayList<Record> result = new ArrayList<Record>();
+        ArrayList<Record> uniqueRecords = new ArrayList<Record>();
         while (!nodes.empty()) {
             Node node = nodes.pop();
-            result.add(node.record);
-            for (int i = 0; i< node.neighbors.size(); i++){
-                nodes.removeElement(node.neighbors.get(i));
+            uniqueRecords.add(node.record);
+            for (int i = 0; i < node.neighbors.size(); i++) {
+                Node removalNode = node.neighbors.get(i);
+                changes.add(new Change(removalNode.record, node.record));
+                nodes.removeElement(removalNode);
             }
         }
-        Collections.reverse(result);
-        return result;
+        Collections.reverse(uniqueRecords);
+
+        return new DeduplicationResult(uniqueRecords, changes);
+    }
+
+    public ArrayList<Change> getChanges() {
+        return getDeduplicationResult().changes;
+
     }
 
     private ArrayList<Record> getSortedRecords() {
@@ -72,4 +90,5 @@ public class Deduplicater {
             }
         }
     }
+
 }
