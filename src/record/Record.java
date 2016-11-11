@@ -1,4 +1,4 @@
-package graph;
+package record;
 
 import java.util.Date;
 
@@ -40,5 +40,9 @@ public class Record implements Comparable<Record>{
         Integer x = number;
         Integer y = record.number;
         return x.compareTo(y);
+    }
+
+    public Record clone(){
+        return new Record(number, id, email, firstName, lastName, address, date);
     }
 }
