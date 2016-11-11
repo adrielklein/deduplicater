@@ -6,21 +6,5 @@
     "lastName": "Smith",
     "address": "123 Street St",
     "entryDate": "2014-05-09T17:30:20+00:00"
-  },
-  {
-    "_id": "123",
-    "email": "asdf@bar.com",
-    "firstName":  "Tim",
-    "lastName": "Smith",
-    "address": "123 Street St",
-    "entryDate": "2014-05-07T17:30:20+00:00"
-  },
-  {
-    "_id": "123",
-    "email": "asdddf@bar.com",
-    "firstName":  "Tim",
-    "lastName": "dfds",
-    "address": "123 sdfs St",
-    "entryDate": "2004-05-07T17:30:20+00:00"
   }]
 }
