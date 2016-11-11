@@ -2,7 +2,7 @@ package record;
 
 import java.util.Date;
 
-public class Record implements Comparable<Record>{
+public class Record implements Comparable<Record> {
     public int number;
     public String id;
     public String email;
@@ -23,9 +23,7 @@ public class Record implements Comparable<Record>{
     }
 
     public boolean isDuplicate(Record record) {
-        if (record.id == id || record.email == email)
-            return true;
-        return false;
+        return (record.id.equals(id) || record.email.equals(email));
     }
 
     public int compareTo(Record record) {
@@ -42,7 +40,8 @@ public class Record implements Comparable<Record>{
         return x.compareTo(y);
     }
 
-    public Record clone(){
+    public Record clone() {
+
         return new Record(number, id, email, firstName, lastName, address, date);
     }
 }
