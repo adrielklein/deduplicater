@@ -1,6 +1,10 @@
 package record;
 
+import org.json.simple.JSONObject;
+
 import java.util.Date;
+
+import static conversion.Converter.convertToString;
 
 public class Record implements Comparable<Record> {
     public int number;
@@ -43,5 +47,16 @@ public class Record implements Comparable<Record> {
     public Record clone() {
 
         return new Record(number, id, email, firstName, lastName, address, date);
+    }
+
+    public String toString(){
+        JSONObject jo = new JSONObject();
+        jo.put("_id", this.id);
+        jo.put("email", this.email);
+        jo.put("firstName", this.firstName);
+        jo.put("lastName", this.lastName);
+        jo.put("address", this.address);
+        jo.put("entryDate", convertToString(this.date));
+        return jo.toString();
     }
 }

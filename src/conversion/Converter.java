@@ -22,7 +22,7 @@ public class Converter {
         return result;
     }
 
-    private static String convertToString(Date date){
+    public static String convertToString(Date date){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss");
         String result = sdf.format(date);
         return result + "+00:00";
