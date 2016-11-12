@@ -4,7 +4,6 @@ import conversion.Converter;
 import record.Record;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Change {
     public Record fromRecord;
@@ -18,7 +17,7 @@ public class Change {
     public ArrayList<String> getFieldChanges() {
         ArrayList<String> result = new ArrayList<String>();
         if (!fromRecord.id.equals(toRecord.id))
-            result.add(String.format("email: %s -> %s", fromRecord.id, toRecord.id));
+            result.add(String.format("id: %s -> %s", fromRecord.id, toRecord.id));
         if (!fromRecord.email.equals(toRecord.email))
             result.add(String.format("email: %s -> %s", fromRecord.email, toRecord.email));
         if (!fromRecord.firstName.equals(toRecord.firstName))
