@@ -31,7 +31,7 @@ public class Deduplicater {
         ArrayList<Record> uniqueRecords = new ArrayList<Record>();
         ArrayList<Change> changes = new ArrayList<Change>();
         visitNodes(nodes, uniqueRecords, changes);
-        Collections.reverse(uniqueRecords);
+        Collections.sort(uniqueRecords);
 
         return new DeduplicationResult(uniqueRecords, changes);
     }
@@ -40,10 +40,9 @@ public class Deduplicater {
         while (!nodes.empty()) {
             Node node = nodes.pop();
             uniqueRecords.add(node.record);
-            for (int i = 0; i < node.neighbors.size(); i++) {
-                Node removalNode = node.neighbors.get(i);
-                changes.add(new Change(removalNode.record, node.record));
-                nodes.removeElement(removalNode);
+            for (Node neighbor: node.neighbors) {
+                changes.add(new Change(neighbor.record, node.record));
+                nodes.removeElement(neighbor);
             }
         }
     }
@@ -53,7 +52,7 @@ public class Deduplicater {
         Collections.sort(records);
         Stack<Node> nodes = new Stack<Node>();
         for (Record record : records) {
-            nodes.push(new Node(record.clone()));
+            nodes.push(new Node(record));
         }
         return nodes;
     }

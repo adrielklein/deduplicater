@@ -44,12 +44,8 @@ public class Record implements Comparable<Record> {
         return x.compareTo(y);
     }
 
-    public Record clone() {
 
-        return new Record(number, id, email, firstName, lastName, address, date);
-    }
-
-    public String toString(){
+    public String toString() {
         JSONObject jo = new JSONObject();
         jo.put("_id", this.id);
         jo.put("email", this.email);

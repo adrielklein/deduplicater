@@ -30,6 +30,15 @@ public class DeduplicaterTest {
     }
 
     @Test
+    public void RecordsWithLaterDatesArePeferred() {
+        ArrayList<Record> records = new ArrayList<Record>();
+        records.add(createRecord(0, "0", "a@gmail.com", "2014-05-08T17:30:20"));
+        records.add(createRecord(1, "0", "b@gmail.com", "2014-05-07T17:30:20"));
+        ArrayList<Record> result = Deduplicater.getDeduplicationResult(records).records;
+        assertRecord("0", "a@gmail.com", result.get(0));
+    }
+
+    @Test
     public void CanDisplayASingleChange() {
         ArrayList<Record> records = new ArrayList<Record>();
         records.add(createRecord(0, "0", "a@gmail.com", "2014-05-07T17:30:20"));
