@@ -1,5 +1,5 @@
 #Deduplicater
-A command line application that removes duplicate entries from a json file
+A command line application that removes duplicate entries from a json file.
 
 ##How to use
 1. clone this repository
