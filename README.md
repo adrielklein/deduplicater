@@ -8,7 +8,7 @@ A command line application that removes duplicate entries from a json file.
 1. `$ java -cp "../lib/json-simple-1.1.jar:." Main fileLocation` replacing `fileLocation` with the location of the json file you would like to use
 
 ##Deduplication Criteria
-Two records are considered duplicates if they have the same `id` or the same `email` (case sensitive).
+Two records are considered duplicates if they have the same `id` or `email` (case sensitive).
 
 If two records are duplicates, the record with the later date is preferred. If dates are the same, then the record that appears later in the file is preferred.
 
