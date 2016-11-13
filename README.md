@@ -1,5 +1,4 @@
-#Deduplicater
-#:smiley: :smiley: -> :smiley:
+#Deduplicater :smiley: :smiley: -> :smiley:
 A command line application that removes duplicate entries from a json file.
 
 ##How to use
