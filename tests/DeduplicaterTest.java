@@ -1,7 +1,7 @@
-import change.Change;
-import deduplicater.Deduplicater;
+import deduplication.Change;
+import deduplication.Deduplicater;
 import org.junit.Test;
-import record.Record;
+import deduplication.Record;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,4 @@
-package deduplicater;
-
-import change.Change;
-import record.Record;
+package deduplication;
 
 import java.util.ArrayList;
 import java.util.Collections;

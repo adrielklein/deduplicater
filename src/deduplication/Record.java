@@ -1,10 +1,10 @@
-package record;
+package deduplication;
 
 import org.json.simple.JSONObject;
 
 import java.util.Date;
 
-import static conversion.Converter.convertToString;
+import static deduplication.Converter.convertToString;
 
 public class Record implements Comparable<Record> {
     public int number;

@@ -1,8 +1,8 @@
-import change.Change;
-import conversion.Converter;
-import deduplicater.Deduplicater;
-import deduplicater.DeduplicationResult;
-import record.Record;
+import deduplication.Change;
+import deduplication.Converter;
+import deduplication.Deduplicater;
+import deduplication.DeduplicationResult;
+import deduplication.Record;
 
 import java.io.File;
 import java.io.FileNotFoundException;
