@@ -2,19 +2,11 @@
   "leads": [
     {
       "lastName": "Smith",
-      "_id": "1",
-      "address": "123 Maple St",
-      "email": "john@bar.com",
+      "_id": "123",
+      "address": "123 Street St",
+      "email": "foo@bar.com",
       "entryDate": "2014-05-07T17:30:20+00:00",
       "firstName": "John"
-    },
-    {
-      "lastName": "Kane",
-      "_id": "1",
-      "address": "44 Main St",
-      "email": "tim@bar.com",
-      "entryDate": "2014-05-07T17:30:20+00:00",
-      "firstName": "Tim"
     }
   ]
 }
