@@ -10,7 +10,7 @@ A command line application that removes duplicate entries from a json file.
 ##Deduplication Criteria
 Two records are considered duplicates if they have the same `id` or the same `email`.
 
-If two records in in the input file are duplicates, the record with the later date is preferred. If dates are the same, then the record that appears later in the file is preferred.
+If two records are duplicates, the record with the later date is preferred. If dates are the same, then the record that appears later in the file is preferred.
 
 We assume that both `id` and `email` are case sensitive.
 
