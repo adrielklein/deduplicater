@@ -4,7 +4,7 @@ A command line application that removes duplicate entries from a JSON file.
 ##How to use
 1. Install Java
 1. Clone this repository
-1. `$ cd deduplication/src`
+1. `$ cd deduplicater/src`
 1. `$ javac Main.java -sourcepath ../src -cp ../lib/json-simple-1.1.jar`
 1. `$ java -cp "../lib/json-simple-1.1.jar:." Main fileLocation` replacing `fileLocation` with the location of the JSON file you would like to use
 
