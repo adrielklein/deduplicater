@@ -16,7 +16,7 @@ We assume that both `id` and `email` are case sensitive.
 
 ##Implementation Details
 
-The program converts the JSON file in an array of `Record` objects (let's call that `records`). Records are then sorted by date. If dates are equal, then they are sorted by their order in the file.
+The program converts the JSON file in an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the JSON file.
 
 Then the `Deduplicater` creates a graph where each record is a node and an edge exists between two nodes if the nodes are duplicates.
 
