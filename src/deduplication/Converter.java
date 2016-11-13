@@ -1,9 +1,8 @@
-package conversion;
+package deduplication;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import record.Record;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

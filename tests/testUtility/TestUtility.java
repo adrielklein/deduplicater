@@ -1,6 +1,6 @@
 package testUtility;
 
-import record.Record;
+import deduplication.Record;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

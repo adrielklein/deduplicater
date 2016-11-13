@@ -1,8 +1,8 @@
-import conversion.Converter;
+import deduplication.Converter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
-import record.Record;
+import deduplication.Record;
 
 import java.io.File;
 import java.io.FileNotFoundException;
