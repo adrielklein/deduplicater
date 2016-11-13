@@ -5,6 +5,7 @@ import record.Record;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Stack;
 
 class Node {
@@ -26,23 +27,30 @@ public class Deduplicater {
 
     public static DeduplicationResult getDeduplicationResult(ArrayList<Record> records) {
         Stack<Node> nodes = getNodes(records);
-        setEdges(nodes);
 
         ArrayList<Record> uniqueRecords = new ArrayList<Record>();
         ArrayList<Change> changes = new ArrayList<Change>();
-        visitNodes(nodes, uniqueRecords, changes);
+        findUniqueRecords(nodes, uniqueRecords, changes);
         Collections.sort(uniqueRecords);
 
         return new DeduplicationResult(uniqueRecords, changes);
     }
 
-    private static void visitNodes(Stack<Node> nodes, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
+    private static void findUniqueRecords(Stack<Node> nodes, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
+        HashSet<Node> removedNodes = new HashSet<Node>();
         while (!nodes.empty()) {
             Node node = nodes.pop();
             uniqueRecords.add(node.record);
-            for (Node neighbor: node.neighbors) {
+            removeNeighbors(nodes, changes, removedNodes, node);
+        }
+    }
+
+    private static void removeNeighbors(Stack<Node> nodes, ArrayList<Change> changes, HashSet<Node> removedNodes, Node node) {
+        for (Node neighbor : node.neighbors) {
+            if (!removedNodes.contains(neighbor)) {
                 changes.add(new Change(neighbor.record, node.record));
                 nodes.removeElement(neighbor);
+                removedNodes.add(neighbor);
             }
         }
     }
@@ -54,6 +62,7 @@ public class Deduplicater {
         for (Record record : records) {
             nodes.push(new Node(record));
         }
+        setEdges(nodes);
         return nodes;
     }
 
