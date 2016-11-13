@@ -30,7 +30,7 @@ public class DeduplicaterTest {
     }
 
     @Test
-    public void RecordsWithLaterDatesArePeferred() {
+    public void RecordsWithLaterDatesArePreferred() {
         ArrayList<Record> records = new ArrayList<Record>();
         records.add(createRecord(0, "0", "a@gmail.com", "2014-05-08T17:30:20"));
         records.add(createRecord(1, "0", "b@gmail.com", "2014-05-07T17:30:20"));
@@ -39,7 +39,7 @@ public class DeduplicaterTest {
     }
 
     @Test
-    public void WhenRecordHasMultipleDuplicatesThenChooseOnlyOne() {
+    public void WhenRecordHasMultipleDuplicatesThereIsOnlyOneChange() {
         ArrayList<Record> records = new ArrayList<Record>();
         records.add(createRecord(0, "0", "a@gmail.com"));
         records.add(createRecord(1, "0", "b@gmail.com"));

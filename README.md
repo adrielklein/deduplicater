@@ -14,6 +14,16 @@ If two records in in the input file are duplicates, the record with the later da
 
 We assume that both `id` and `email` are case sensitive. For example, `Hello` and `heLLo` would be considered unique ids.
 
+##Implementation Details
+
+The program converts the JSON file in an array of `Record` objects (let's call that `records`). Records are then sorted by date. If dates are equal, then they are sorted by their order in the file.
+
+Then the `Deduplicater` creates a graph where each record is a node and an edge exists between two nodes if the nodes are duplicates.
+
+After this graph is created, the `Deduplicater` removes the greatest record from the `records` array, adds it to an array called `uniqueRecords`, and removes all of its neighbors from `records`. This process repeats itself until there are no nodes left in `records`.
+
+The resulting unique records are then printed to the console as well as the duplicate records that were removed.
+
 ##Sample Input
 ```
 {
