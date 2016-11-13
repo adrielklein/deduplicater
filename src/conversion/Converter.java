@@ -28,19 +28,19 @@ public class Converter {
         return result + "+00:00";
     }
 
-    public static ArrayList<Record> convertToLeads(String input) {
+    public static ArrayList<Record> convertToRecords(String input) {
         ArrayList<Record> result = new ArrayList<Record>();
 
         JSONObject obj = (JSONObject) JSONValue.parse(input);
         JSONArray records = (JSONArray) obj.get("leads");
         for (int i = 0; i < records.size(); i++) {
-            JSONObject lead = (JSONObject) records.get(i);
-            String id = (String) lead.get("_id");
-            String email = (String) lead.get("email");
-            String firstName = (String) lead.get("firstName");
-            String lastName = (String) lead.get("lastName");
-            String address = (String) lead.get("address");
-            Date date = convertToDate((String) lead.get("entryDate"));
+            JSONObject record = (JSONObject) records.get(i);
+            String id = (String) record.get("_id");
+            String email = (String) record.get("email");
+            String firstName = (String) record.get("firstName");
+            String lastName = (String) record.get("lastName");
+            String address = (String) record.get("address");
+            Date date = convertToDate((String) record.get("entryDate"));
             result.add(new Record(i, id, email, firstName, lastName, address, date));
         }
         return result;

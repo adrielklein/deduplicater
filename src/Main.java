@@ -16,8 +16,7 @@ public class Main {
             return;
         }
         String content = new Scanner(new File(args[0])).useDelimiter("\\Z").next();
-        ArrayList<Record> records = Converter.convertToLeads(content);
-//        Deduplicater deduplicater = new Deduplicater(records);
+        ArrayList<Record> records = Converter.convertToRecords(content);
         DeduplicationResult result = Deduplicater.getDeduplicationResult(records);
 
         printInputAndOutput(records, result.records);

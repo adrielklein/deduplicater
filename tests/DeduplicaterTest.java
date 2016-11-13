@@ -1,31 +1,16 @@
 import change.Change;
 import deduplicater.Deduplicater;
-import record.Record;
 import org.junit.Test;
+import record.Record;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static testUtility.TestUtility.createDate;
+import static testUtility.TestUtility.createRecord;
 
 public class DeduplicaterTest {
 
-    private Date createDate(String date) {
-        Date result;
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd'T'hh:mm:ss");
-            result = sdf.parse(date);
-        } catch (ParseException e) {
-            result = null;
-        }
-        return result;
-    }
-
-    private Record createRecord(int number, String id, String email, String date) {
-        return new Record(number, id, email, "firstName", "lastName", "address", createDate(date));
-    }
 
     private void assertRecord(String id, String email, Record record) {
         assertEquals(id, record.id);
