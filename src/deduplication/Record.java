@@ -46,13 +46,13 @@ public class Record implements Comparable<Record> {
 
 
     public String toString() {
-        JSONObject jo = new JSONObject();
-        jo.put("_id", this.id);
-        jo.put("email", this.email);
-        jo.put("firstName", this.firstName);
-        jo.put("lastName", this.lastName);
-        jo.put("address", this.address);
-        jo.put("entryDate", convertToString(this.date));
-        return jo.toString();
+        JSONObject result = new JSONObject();
+        result.put("_id", this.id);
+        result.put("email", this.email);
+        result.put("firstName", this.firstName);
+        result.put("lastName", this.lastName);
+        result.put("address", this.address);
+        result.put("entryDate", convertToString(this.date));
+        return result.toString();
     }
 }
