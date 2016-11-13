@@ -19,7 +19,7 @@ The program converts the JSON file to an array of `Record` objects (let's call t
 
 Then the `Deduplicater` creates a graph where each record is a node and an edge exists between two nodes if the nodes are duplicates.
 
-After this graph is created, the `Deduplicater` removes the greatest record from the `records` array, adds it to an array called `uniqueRecords`, and removes all of its neighbors from `records`. This process repeats itself until there are no nodes left in `records`.
+After this graph is created, the `Deduplicater` removes the greatest record from `records`, adds it to an array called `uniqueRecords`, and removes all of its neighbors from `records`. This process repeats itself until there are no nodes left in `records`.
 
 The resulting unique records are then printed to the console as well as the duplicate records that were removed.
 
