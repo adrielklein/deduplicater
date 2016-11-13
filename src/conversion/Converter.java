@@ -16,13 +16,13 @@ public class Converter {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd'T'hh:mm:ss");
             result = sdf.parse(date);
-        } catch (ParseException e){
+        } catch (ParseException e) {
             result = null;
         }
         return result;
     }
 
-    public static String convertToString(Date date){
+    public static String convertToString(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss");
         String result = sdf.format(date);
         return result + "+00:00";
@@ -49,7 +49,7 @@ public class Converter {
     public static JSONObject convertToJSON(ArrayList<Record> records) {
         JSONArray jsonRecords = new JSONArray();
 
-        for (int i =0; i < records.size(); i++) {
+        for (int i = 0; i < records.size(); i++) {
             Record record = records.get(i);
             JSONObject jo = new JSONObject();
             jo.put("_id", record.id);

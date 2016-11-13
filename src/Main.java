@@ -48,10 +48,10 @@ public class Main {
         System.out.println();
         System.out.println(getMessage(records, uniqueRecords));
         System.out.println();
-        System.out.println("Input:");
+        System.out.println(String.format("Input (%d):", records.size()));
         System.out.println(Converter.convertToJSON(records).toString());
         System.out.println();
-        System.out.println("Output:");
+        System.out.println(String.format("Output (%d):", uniqueRecords.size()));
         System.out.println(Converter.convertToJSON(uniqueRecords).toString());
         System.out.println();
     }
