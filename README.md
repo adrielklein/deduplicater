@@ -1,12 +1,12 @@
 #Deduplicater :smiley: :smiley: :arrow_right: :smiley:
-A command line application that removes duplicate entries from a json file.
+A command line application that removes duplicate entries from a JSON file.
 
 ##How to use
 1. Install Java
 1. Clone this repository
 1. `$ cd deduplicater/src`
 1. `$ javac Main.java -sourcepath ../src -cp ../lib/json-simple-1.1.jar`
-1. `$ java -cp "../lib/json-simple-1.1.jar:." Main fileLocation` replacing `fileLocation` with the location of the json file you would like to use
+1. `$ java -cp "../lib/json-simple-1.1.jar:." Main fileLocation` replacing `fileLocation` with the location of the JSON file you would like to use
 
 ##Deduplication Criteria
 Two records are considered duplicates if they have the same `id` or `email` (case sensitive).
