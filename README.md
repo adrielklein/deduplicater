@@ -15,7 +15,7 @@ If two records are duplicates, the record with the later date is preferred. If d
 
 ##Implementation Details
 
-The program converts the JSON file in an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the JSON file.
+The program converts the JSON file to an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the JSON file.
 
 Then the `Deduplicater` creates a graph where each record is a node and an edge exists between two nodes if the nodes are duplicates.
 
