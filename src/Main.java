@@ -16,9 +16,8 @@ public class Main {
             return;
         }
         String content = new Scanner(new File(args[0])).useDelimiter("\\Z").next();
-        ArrayList<Record> records = Converter.convertToLeads(content);
-        Deduplicater deduplicater = new Deduplicater(records);
-        DeduplicationResult result = deduplicater.getDeduplicationResult();
+        ArrayList<Record> records = Converter.convertToRecords(content);
+        DeduplicationResult result = Deduplicater.getDeduplicationResult(records);
 
         printInputAndOutput(records, result.records);
         printDuplicates(result.changes);
@@ -31,15 +30,23 @@ public class Main {
             System.out.println(String.format("\nDuplicate #%d:\n", i + 1));
             System.out.println(String.format("Original Record:\n %s", change.fromRecord.toString()));
             System.out.println(String.format("New Record:\n %s", change.toRecord.toString()));
-            System.out.println("Field Changes:");
-            for (String fieldChange : change.getFieldChanges())
-                System.out.println(String.format("    %s", fieldChange));
+            printFieldChanges(change.getFieldChanges());
         }
+    }
+
+    private static void printFieldChanges(ArrayList<String> fieldChanges) {
+        if (fieldChanges.size() ==0){
+            System.out.println("Records were identical. No field changes.");
+            return;
+        }
+        System.out.println("Field Changes:");
+        for (String fieldChange : fieldChanges)
+            System.out.println(String.format("    %s", fieldChange));
     }
 
     private static void printInputAndOutput(ArrayList<Record> records, ArrayList<Record> uniqueRecords) {
         System.out.println();
-        System.out.println("Duplicates have been removed!");
+        System.out.println(getMessage(records, uniqueRecords));
         System.out.println();
         System.out.println("Input:");
         System.out.println(Converter.convertToJSON(records).toString());
@@ -47,6 +54,16 @@ public class Main {
         System.out.println("Output:");
         System.out.println(Converter.convertToJSON(uniqueRecords).toString());
         System.out.println();
-        System.out.println(String.format("Number of duplicate records removed: %d", records.size() - uniqueRecords.size()));
+    }
+
+    private static String getMessage(ArrayList<Record> records, ArrayList<Record> uniqueRecords) {
+        int duplicatesRemoved = records.size() - uniqueRecords.size();
+        String message;
+        if (duplicatesRemoved == 1){
+            message = "Removed 1 duplicate!";
+        } else {
+            message = String.format("Removed %d duplicates!", duplicatesRemoved);
+        }
+        return String.format("Deduplicater finished processing. %s", message);
     }
 }
