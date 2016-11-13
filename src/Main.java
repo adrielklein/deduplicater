@@ -29,10 +29,10 @@ public class Main {
         System.out.println(getMessage(records, uniqueRecords));
         System.out.println();
         System.out.println(String.format("Input (%d):", records.size()));
-        System.out.println(Converter.convertToJSON(records).toString());
+        System.out.println(Converter.convertToJSON(records));
         System.out.println();
         System.out.println(String.format("Output (%d):", uniqueRecords.size()));
-        System.out.println(Converter.convertToJSON(uniqueRecords).toString());
+        System.out.println(Converter.convertToJSON(uniqueRecords));
         System.out.println();
     }
 
@@ -41,8 +41,8 @@ public class Main {
         for (int i = 0; i < changes.size(); i++) {
             Change change = changes.get(i);
             System.out.println(String.format("\nDuplicate #%d:\n", i + 1));
-            System.out.println(String.format("Original Record:\n %s", change.fromRecord.toString()));
-            System.out.println(String.format("New Record:\n %s", change.toRecord.toString()));
+            System.out.println(String.format("Original Record:\n %s", change.fromRecord));
+            System.out.println(String.format("New Record:\n %s", change.toRecord));
             printFieldChanges(change.getFieldChanges());
         }
     }
