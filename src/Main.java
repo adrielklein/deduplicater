@@ -24,26 +24,6 @@ public class Main {
 
     }
 
-    private static void printDuplicates(ArrayList<Change> changes) {
-        for (int i = 0; i < changes.size(); i++) {
-            Change change = changes.get(i);
-            System.out.println(String.format("\nDuplicate #%d:\n", i + 1));
-            System.out.println(String.format("Original Record:\n %s", change.fromRecord.toString()));
-            System.out.println(String.format("New Record:\n %s", change.toRecord.toString()));
-            printFieldChanges(change.getFieldChanges());
-        }
-    }
-
-    private static void printFieldChanges(ArrayList<String> fieldChanges) {
-        if (fieldChanges.size() ==0){
-            System.out.println("Records were identical. No field changes.");
-            return;
-        }
-        System.out.println("Field Changes:");
-        for (String fieldChange : fieldChanges)
-            System.out.println(String.format("    %s", fieldChange));
-    }
-
     private static void printInputAndOutput(ArrayList<Record> records, ArrayList<Record> uniqueRecords) {
         System.out.println();
         System.out.println(getMessage(records, uniqueRecords));
@@ -56,10 +36,32 @@ public class Main {
         System.out.println();
     }
 
+
+    private static void printDuplicates(ArrayList<Change> changes) {
+        for (int i = 0; i < changes.size(); i++) {
+            Change change = changes.get(i);
+            System.out.println(String.format("\nDuplicate #%d:\n", i + 1));
+            System.out.println(String.format("Original Record:\n %s", change.fromRecord.toString()));
+            System.out.println(String.format("New Record:\n %s", change.toRecord.toString()));
+            printFieldChanges(change.getFieldChanges());
+        }
+    }
+
+    private static void printFieldChanges(ArrayList<String> fieldChanges) {
+        if (fieldChanges.size() == 0) {
+            System.out.println("Records were identical. No field changes.");
+            return;
+        }
+        System.out.println("Field Changes:");
+        for (String fieldChange : fieldChanges)
+            System.out.println(String.format("    %s", fieldChange));
+    }
+
+
     private static String getMessage(ArrayList<Record> records, ArrayList<Record> uniqueRecords) {
         int duplicatesRemoved = records.size() - uniqueRecords.size();
         String message;
-        if (duplicatesRemoved == 1){
+        if (duplicatesRemoved == 1) {
             message = "Removed 1 duplicate!";
         } else {
             message = String.format("Removed %d duplicates!", duplicatesRemoved);

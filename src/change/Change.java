@@ -1,6 +1,6 @@
 package change;
 
-import  conversion.Converter;
+import conversion.Converter;
 import record.Record;
 
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ public class Change {
         if (!fromRecord.date.equals(toRecord.date))
             result.add(String.format("date: %s -> %s", Converter.convertToString(fromRecord.date),
                     Converter.convertToString(toRecord.date)));
-
         return result;
     }
 }
