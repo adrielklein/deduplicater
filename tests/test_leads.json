@@ -1,12 +1,12 @@
 {
   "leads": [
     {
-      "lastName": "Smith",
       "_id": "123",
-      "address": "123 Street St",
       "email": "foo@bar.com",
-      "entryDate": "2014-05-07T17:30:20+00:00",
-      "firstName": "John"
+      "firstName": "John",
+      "lastName": "Smith",
+      "address": "123 Street St",
+      "entryDate": "2014-05-07T17:30:20+00:00"
     }
   ]
 }
