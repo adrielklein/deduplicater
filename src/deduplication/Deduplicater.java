@@ -19,51 +19,51 @@ public class Deduplicater {
 
     private static void findUniqueRecordsandChanges(ArrayList<Record> records, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
         HashMap[] maps = getMaps(records);
-        HashMap<String, ArrayList<Integer>> idToIndexes = maps[0];
-        HashMap<String, ArrayList<Integer>> emailToIndexes = maps[1];
-        boolean[] isVisited = new boolean[records.size()];
+        HashMap<String, ArrayList<Record>> idToRecords = maps[0];
+        HashMap<String, ArrayList<Record>> emailToRecords = maps[1];
         for (int index = records.size() - 1; index >= 0; index--) {
-            if (isVisited[index])
-                continue;
-            isVisited[index] = true;
-
             Record record = records.get(index);
+            if (record.isVisited) {
+                continue;
+            }
+            record.isVisited = true;
+
             uniqueRecords.add(record);
-            visitDuplicates(records, changes, idToIndexes, isVisited, index, record.id);
-            visitDuplicates(records, changes, emailToIndexes, isVisited, index, record.email);
+            visitDuplicates(changes, idToRecords, emailToRecords, record);
         }
 
     }
 
-    private static void visitDuplicates(ArrayList<Record> records, ArrayList changes, HashMap<String, ArrayList<Integer>> map, boolean[] isVisited, int index, String key) {
-        for (Integer duplicateIndex : map.get(key)) {
-            if (!isVisited[duplicateIndex]) {
-                isVisited[duplicateIndex] = true;
-                changes.add(new Change(records.get(duplicateIndex), records.get(index)));
+    private static void visitDuplicates(ArrayList<Change> changes, HashMap<String, ArrayList<Record>> idToRecords, HashMap<String, ArrayList<Record>> emailToRecords, Record record) {
+        ArrayList<Record> duplicates = idToRecords.get(record.id);
+        duplicates.addAll(emailToRecords.get(record.email));
+        for (Record duplicate : duplicates) {
+            if (!duplicate.isVisited) {
+                duplicate.isVisited = true;
+                changes.add(new Change(duplicate, record));
             }
         }
     }
 
 
     private static HashMap[] getMaps(ArrayList<Record> records) {
-        HashMap<String, ArrayList<Integer>> idToIndexes = new HashMap<String, ArrayList<Integer>>();
-        HashMap<String, ArrayList<Integer>> emailToIndexes = new HashMap<String, ArrayList<Integer>>();
-        for (int index = 0; index < records.size(); index++) {
-            Record record = records.get(index);
-            addToMap(record.id, index, idToIndexes);
-            addToMap(record.email, index, emailToIndexes);
+        HashMap<String, ArrayList<Record>> idToIndexes = new HashMap<String, ArrayList<Record>>();
+        HashMap<String, ArrayList<Record>> emailToIndexes = new HashMap<String, ArrayList<Record>>();
+        for (Record record : records) {
+            addToMap(record.id, record, idToIndexes);
+            addToMap(record.email, record, emailToIndexes);
         }
         return new HashMap[]{idToIndexes, emailToIndexes};
 
     }
 
-    private static void addToMap(String key, int index, HashMap<String, ArrayList<Integer>> map) {
+    private static void addToMap(String key, Record record, HashMap<String, ArrayList<Record>> map) {
         if (map.containsKey(key)) {
-            map.get(key).add(index);
+            map.get(key).add(record);
         } else {
-            ArrayList<Integer> indexes = new ArrayList<Integer>();
-            indexes.add(index);
-            map.put(key, indexes);
+            ArrayList<Record> records = new ArrayList<Record>();
+            records.add(record);
+            map.put(key, records);
         }
     }
 }

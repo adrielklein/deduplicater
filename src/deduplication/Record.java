@@ -14,6 +14,7 @@ public class Record implements Comparable<Record> {
     public String lastName;
     public String address;
     public Date date;
+    public boolean isVisited;
 
     public Record(int startNumber, String startId, String startEmail, String startFirstName,
                   String startLastName, String startAddress, Date startDate) {
@@ -24,6 +25,7 @@ public class Record implements Comparable<Record> {
         lastName = startLastName;
         address = startAddress;
         date = startDate;
+        isVisited = false;
     }
 
     public boolean isDuplicate(Record record) {
