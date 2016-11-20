@@ -17,11 +17,14 @@ If two records are duplicates, the record with the later date is preferred. If d
 
 The program converts the JSON file to an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the file.
 
-Then the `Deduplicater` creates a graph where each record is a node and an edge exists between two nodes if the nodes are duplicates.
+Two hash tables are constructed.
 
-After this graph is created, the `Deduplicater` removes the greatest record from `records`, adds it to an array called `uniqueRecords`, and removes all of its neighbors from `records`. This process repeats itself until there are no nodes left in `records`.
+1. `idToIndexes`: maps the `id` field to a list of indexes in the array that have that id
+2. `emailToIndexes`: maps the `email' field to a list of indexes in the array that have that email
 
-The resulting unique records are then printed to the console as well as the duplicate records that were removed.
+The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited.
+
+The next largest unvisited record is then added to `uniqueRecords` and it's duplicates are marked as visited. The process continues until we have reached the smallest unvisited record.
 
 ##Sample Input
 ```
