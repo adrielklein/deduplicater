@@ -22,7 +22,7 @@ Two hash tables are constructed.
 1. `idToIndexes`: maps the `id` field to a list of indexes in the array that have that id
 2. `emailToIndexes`: maps the `email` field to a list of indexes in the array that have that email
 
-The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited.
+The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited as well.
 
 The next largest unvisited record is then added to `uniqueRecords` and it's duplicates are marked as visited. The process continues until we have reached the smallest unvisited record.
 
