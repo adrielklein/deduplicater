@@ -24,7 +24,7 @@ Two hash tables are constructed.
 
 The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited as well.
 
-The next largest unvisited record is then added to `uniqueRecords` and it's duplicates are marked as visited. The process continues until we have reached the smallest unvisited record.
+The next largest unvisited record is then added to `uniqueRecords` and its duplicates are marked as visited. The process continues until we have reached the smallest unvisited record.
 
 ##Sample Input
 ```
