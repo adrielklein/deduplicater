@@ -11,13 +11,13 @@ public class Deduplicater {
 
         ArrayList<Record> uniqueRecords = new ArrayList<Record>();
         ArrayList<Change> changes = new ArrayList<Change>();
-        findUniqueRecords(records, uniqueRecords, changes);
+        findUniqueRecordsandChanges(records, uniqueRecords, changes);
         Collections.sort(uniqueRecords);
 
         return new DeduplicationResult(uniqueRecords, changes);
     }
 
-    private static void findUniqueRecords(ArrayList<Record> records, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
+    private static void findUniqueRecordsandChanges(ArrayList<Record> records, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
         HashMap[] maps = getMaps(records);
         HashMap<String, ArrayList<Integer>> idToIndexes = maps[0];
         HashMap<String, ArrayList<Integer>> emailToIndexes = maps[1];
@@ -37,12 +37,11 @@ public class Deduplicater {
 
     private static void visitDuplicates(ArrayList<Record> records, ArrayList changes, HashMap<String, ArrayList<Integer>> map, boolean[] isVisited, int index, String key) {
         for (Integer duplicateIndex : map.get(key)) {
-            if (!duplicateIndex.equals(index) && !isVisited[duplicateIndex]) {
+            if (!isVisited[duplicateIndex]) {
                 isVisited[duplicateIndex] = true;
                 changes.add(new Change(records.get(duplicateIndex), records.get(index)));
             }
         }
-        map.remove(key);
     }
 
 
