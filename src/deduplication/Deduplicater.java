@@ -23,15 +23,12 @@ public class Deduplicater {
         HashMap<String, ArrayList<Record>> emailToRecords = maps[1];
         for (int index = records.size() - 1; index >= 0; index--) {
             Record record = records.get(index);
-            if (record.isVisited) {
-                continue;
+            if (!record.isVisited) {
+                record.isVisited = true;
+                uniqueRecords.add(record);
+                visitDuplicates(changes, idToRecords, emailToRecords, record);
             }
-            record.isVisited = true;
-
-            uniqueRecords.add(record);
-            visitDuplicates(changes, idToRecords, emailToRecords, record);
         }
-
     }
 
     private static void visitDuplicates(ArrayList<Change> changes, HashMap<String, ArrayList<Record>> idToRecords, HashMap<String, ArrayList<Record>> emailToRecords, Record record) {
