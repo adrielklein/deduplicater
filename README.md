@@ -17,12 +17,10 @@ If two records are duplicates, the record with the later date is preferred. If d
 
 The program converts the JSON file to an array of `Record` objects . The array is sorted by date, and if those are equal then by order in the file.
 
-Two hash tables are constructed.
+1. `idToIndexes`: maps the `id` field to a list of records with that id
+2. `emailToIndexes`: maps the `email` field a list of records with that email
 
-1. `idToIndexes`: maps the `id` field to a list of indexes in the array representing the records which have that id
-2. `emailToIndexes`: maps the `email` field to a list of indexes in the array representing the records which have that email
-
-The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited as well.
+The largest record in the array is added to a `uniqueRecords` list and marked as visited. All duplicates of the record are then looked up in the hash tables and marked as visited as well.
 
 The next largest unvisited record is then added to `uniqueRecords` and its duplicates are marked as visited. The process continues until all records are visited.
 
