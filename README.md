@@ -15,7 +15,7 @@ If two records are duplicates, the record with the later date is preferred. If d
 
 ##Implementation Details
 
-The program converts the JSON file to an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the file.
+The program converts the JSON file to an array of `Record` objects . The array is sorted by date, and if those are equal then by order in the file.
 
 Two hash tables are constructed.
 
