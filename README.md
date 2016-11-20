@@ -20,7 +20,7 @@ The program converts the JSON file to an array of `Record` objects . The array i
 Two hash tables are constructed.
 
 1. `idToIndexes`: maps the `id` field to a list of indexes in the array that have that id
-2. `emailToIndexes`: maps the `email' field to a list of indexes in the array that have that email
+2. `emailToIndexes`: maps the `email` field to a list of indexes in the array that have that email
 
 The largest record in the array is added to a `uniqueRecords` array and marked as visited. All duplicates of the record are then looked up via the hash tables and marked as visited.
 
