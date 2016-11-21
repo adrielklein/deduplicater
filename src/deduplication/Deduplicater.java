@@ -11,13 +11,13 @@ public class Deduplicater {
 
         ArrayList<Record> uniqueRecords = new ArrayList<Record>();
         ArrayList<Change> changes = new ArrayList<Change>();
-        findUniqueRecordsandChanges(records, uniqueRecords, changes);
+        findUniqueRecordsAndChanges(records, uniqueRecords, changes);
         Collections.sort(uniqueRecords);
 
         return new DeduplicationResult(uniqueRecords, changes);
     }
 
-    private static void findUniqueRecordsandChanges(ArrayList<Record> records, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
+    private static void findUniqueRecordsAndChanges(ArrayList<Record> records, ArrayList<Record> uniqueRecords, ArrayList<Change> changes) {
         HashMap[] maps = getMaps(records);
         HashMap<String, ArrayList<Record>> idToRecords = maps[0];
         HashMap<String, ArrayList<Record>> emailToRecords = maps[1];
