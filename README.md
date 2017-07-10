@@ -1,19 +1,19 @@
-#Deduplicater :smiley: :smiley: :arrow_right: :smiley:
+# Deduplicater :smiley: :smiley: :arrow_right: :smiley:
 A command line application that removes duplicate entries from a JSON file.
 
-##How to use
+## How to use
 1. Install Java
 1. Clone this repository
 1. `$ cd deduplicater/src`
 1. `$ javac Main.java -sourcepath ../src -cp ../lib/json-simple-1.1.jar`
 1. `$ java -cp "../lib/json-simple-1.1.jar:." Main fileLocation` replacing `fileLocation` with the location of the JSON file you would like to use
 
-##Deduplication Criteria
+## Deduplication Criteria
 Two records are considered duplicates if they have the same `id` or `email` (case sensitive).
 
 If two records are duplicates, the record with the later date is preferred. If dates are the same, then the record that appears later in the file is preferred.
 
-##Implementation Details
+## Implementation Details
 
 The program converts the JSON file to an array of `Record` objects (let's call that `records`). The array is sorted by date, and if those are equal then by order in the file.
 
@@ -23,7 +23,7 @@ After this graph is created, the `Deduplicater` removes the greatest record from
 
 The resulting unique records are then printed to the console as well as the duplicate records that were removed.
 
-##Sample Input
+## Sample Input
 ```
 {
   "leads": [
@@ -47,7 +47,7 @@ The resulting unique records are then printed to the console as well as the dupl
 }
 ```
 
-##Sample Output
+## Sample Output
 ```
 Deduplicater finished processing. Removed 1 duplicate!
 
